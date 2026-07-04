@@ -8,7 +8,7 @@ This updated version includes several major improvements over the original pipel
   - strand information has been assigned to all ERV loci
   - three loci (`cORF1ofHML2`, `K-30`, `K-50`) were removed because they do not overlap with RepeatMasker LTR annotations
 - Included `Clean_merge_stranded_erv.r` and `Clean_merge_stranded_erv_fwd_strand.r` to support ERV/gene quantification from different stranded library preparation protocols.
-- Included `erv_overlap_summary.tsv` that summarizes ERV-overlapping and upstream genomic features in 'Homo_sapiens.GRCh38.110.gtf'.
+- Included `erv_overlap_summary.tsv` that summarizes ERV-overlapping and upstream genomic features in `Homo_sapiens.GRCh38.110.gtf`.
 
 # General workflow
 <div style="background-color: white; padding: 16px; display: inline-block;">
@@ -39,7 +39,32 @@ normalize.r
 - Hg38 comprehensive gene annotation (Homo_sapiens.GRCh38.110.gtf): https://hpc.nih.gov/refdb/dbview.php?id=1038
 
 # Pipeline running 
-WIP
+Run ERVmap2.sh from the folder containing all FASTQ files for all samples.
+- This script is designed to automatically detect single- or paired-end FASTQ files, extract sample names based on the file names, create a cache directory for each sample within the specified output directory, and generate final merged ERV and gene count tables containing counts from all samples.
+## Output structure
+  ```
+  OUTPUT_DIR/
+    sample1/
+      Aligned.sortedByCoord.out.bam
+      ReadsPerGene.out.tab
+      Log.final.out
+      sample1.gene
+      sample1.erv
+      filtered.bam
+      filtered.bam.bai
+    sample2/
+      ...
+    merged_ervs.txt
+    merged_genes.txt
+  ```
+## Notes
+- Make sure your FASTQ files are correctly formatted:
+  - Single-end: `*_SS.fastq.gz`
+  - Paired-end: `*_R1.fastq.gz` and `*_R2.fastq.gz`
+- You need to specify the stranded library type:
+  - `rev` = reverse-stranded methods, also known as first-strand methods, such as dUTP, NSR, and NNSR.
+  - `fwd` = forward-stranded methods, also known as second-strand methods, such as Directional Illumina ligation and Standard SOLiD.
+  - ERVmap2 can also be run on unstranded sequencing data by modifying `Clean_merge_stranded_erv.r` to select the unstranded read counts from the STAR output file `ReadsPerGene.out.tab`. However, this is not recommended, as using unstranded counts may reduce the accuracy of ERV quantification.
 
 # Authors
 Bessie Wang, Thomas Deckers, Eric Liu, Maria Tokuyama
