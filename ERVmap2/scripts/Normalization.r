@@ -1,7 +1,7 @@
 # Count normalization in R
 
 ## 1. Normalize raw cellular genes using DEseq2 and generate size factors per sample
-gene_count <- read.csv("merged_genes.csv", row.names=1)
+gene_count <- read.table("merged_genes.txt",header = TRUE,row.names = 1,sep = "\t",check.names = FALSE)
 
 ### Perform normalization using DESeq2
 library(DESeq2)
@@ -19,7 +19,7 @@ write.table(sizeFactors(dds), "normalized_factors.txt", sep="\t", quote=FALSE, c
 ## 2. Normalize raw ERV counts using cellular gene size factors
 size_factor <- read.table("normalized_factors.txt")
 colnames(size_factor) <- c("sizeFactor")
-erv_count <- read.csv("merged_ervs.csv", row.names=1)
+erv_count <- read.table("merged_ervs.txt",header = TRUE,row.names = 1,sep = "\t",check.names = FALSE)
 
 norm_erv_count <- erv_count
 # Loop through each column in erv_count (each column name is a sample)
