@@ -1,8 +1,5 @@
-#!/arc/software/spack/opt/spack/linux-centos7-x86_64/gcc-5.4.0/r-3.6.2-3p7kfxatyhrmisok24ivjmu3guuabal5/bin/Rscript
-
-#
+#!/usr/bin/env Rscript
 # Combines ERV and Gene Counts into respective merged files
-#
 
 args <- commandArgs(TRUE)
 
