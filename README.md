@@ -45,6 +45,7 @@ normalize.r
    - What you need:
      - Genome FASTA file
      - Customized genome GTF file: `Homo_sapiens.GRCh38.110.gtf` with the features mentioned above removed and ERV features appended as exons
+       Example: `1	ervmap	exon	896177	898458	.	-	.	gene_id "5803"; transcript_id "5803";`
   - Command:
     ```
     STAR --runThreadN 6 \
