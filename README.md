@@ -40,7 +40,7 @@ normalize.r
 
 # Pipeline running 
 Run ERVmap2.sh from the folder containing all FASTQ files for all samples.
-- This script is designed to automatically detect single- or paired-end FASTQ files, extract sample names based on the file names, create a cache directory for each sample within the specified output directory, and generate final merged ERV and gene count tables containing counts from all samples.
+- This script is designed to automatically detect single- or paired-end FASTQ files, extract sample names based on the file names, create a cache directory for each sample within the specified output directory, and generate final merged ERV and gene count tables containing counts from all samples. You can use `ERVmap2/scripts/Normalization.r` to normalize the merged counts following the pipeline, or apply your own preferred normalization or transformation method.
 ## Output structure
   ```
   OUTPUT_DIR/
