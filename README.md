@@ -37,9 +37,24 @@ normalize.r
 ## Reference genome files
 - Hg38 primary assembly FASTA: https://www.ensembl.org/Homo_sapiens/Info/Index
 - Hg38 comprehensive gene annotation (Homo_sapiens.GRCh38.110.gtf): https://hpc.nih.gov/refdb/dbview.php?id=1038
-
+  - The following features were removed from this GTF due to overlap with ERVmap2 annotations:
+    - All features removed: `ERV3-1`, `ERVFRD-1`, `ERVK3-1`, `ERVV-1`, and `ERVV-2`
+    - Transcript features removed: `ENST00000603053`, `ENST00000614721`, `ENST00000447535`, and `ENST00000603704`
 # Pipeline running 
-Run ERVmap2.sh from the folder containing all FASTQ files for all samples.
+1. Generate a customized STAR index
+   - What you need:
+     - Genome FASTA file
+     - Customized genome GTF file: `Homo_sapiens.GRCh38.110.gtf` with the features mentioned above removed and ERV features appended as exons
+  - Command:
+    ```
+    STAR --runThreadN 6 \
+    --runMode genomeGenerate \
+    --genomeDir /path/to/genomeDir \
+    --genomeFastaFiles /path/to/genome/fasta \
+    --sjdbGTFfile /path/to/customized.gtf \
+    --sjdbOverhang 99
+    ```
+2. Run ERVmap2.sh from the folder containing all FASTQ files for all samples.
 - This script is designed to automatically detect single- or paired-end FASTQ files, extract sample names based on the file names, create a cache directory for each sample within the specified output directory, and generate final merged ERV and gene count tables containing counts from all samples. You can use `ERVmap2/scripts/Normalization.r` to normalize the merged counts following the pipeline, or apply your own preferred normalization or transformation method.
 ## Output structure
   ```
