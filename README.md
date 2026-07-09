@@ -37,7 +37,7 @@ normalize.r
 ## Reference genome files
 - Hg38 primary assembly FASTA: https://www.ensembl.org/Homo_sapiens/Info/Index
 - Hg38 comprehensive gene annotation (Homo_sapiens.GRCh38.110.gtf): https://hpc.nih.gov/refdb/dbview.php?id=1038
-  - The following features were removed from this GTF due to overlap with ERVmap2 annotations:
+  - The [following features](https://github.com/Bessie92/ERVmap2/blob/main/ERVmap2/assets/features_removed_from_GRCh38.110.gtf) were removed from this GTF due to overlap with ERVmap2 annotations:
     - All features removed: `ERV3-1`, `ERVFRD-1`, `ERVK3-1`, `ERVV-1`, and `ERVV-2`
     - Transcript features removed: `ENST00000603053`, `ENST00000614721`, `ENST00000447535`, and `ENST00000603704`
 # Pipeline running 
