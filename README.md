@@ -86,3 +86,10 @@ normalize.r
 # Authors
 Bessie Wang, Thomas Deckers, Eric Liu, Maria Tokuyama
 **University of British Columbia, Life Science Institute**
+
+# Citation
+Identification of a set of endogenous retroviruses linked to IL-1-mediated immunopathology in severe COVID-19
+
+Bessie Wang, Thomas Deckers, Eric Liu, Maria Tokuyama
+
+bioRxiv 2026.07.08.737320; doi: https://doi.org/10.64898/2026.07.08.737320
